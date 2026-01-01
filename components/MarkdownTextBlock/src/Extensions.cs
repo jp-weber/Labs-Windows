@@ -7,13 +7,13 @@
 //using ColorCode.Styling;
 using Markdig.Syntax;
 using Markdig.Syntax.Inlines;
-using CommunityToolkit.Labs.WinUI.MarkdownTextBlock.TextElements;
+using CommunityToolkit.WinUI.Controls.TextElements;
 using System.Xml.Linq;
 using System.Globalization;
 using Windows.UI.ViewManagement;
 using HtmlAgilityPack;
 
-namespace CommunityToolkit.Labs.WinUI.MarkdownTextBlock;
+namespace CommunityToolkit.WinUI.Controls;
 
 public static class Extensions
 {
@@ -710,13 +710,13 @@ public static class Extensions
         return new(0, 0);
     }
 
-    public static SolidColorBrush GetAccentColorBrush()
+    public static SolidColorBrush GetAccentColorBrush(UIColorType colorType = UIColorType.Accent)
     {
         // Create a UISettings object to get the accent color
         var uiSettings = new UISettings();
 
         // Get the accent color as a Color value
-        var accentColor = uiSettings.GetColorValue(UIColorType.Accent);
+        var accentColor = uiSettings.GetColorValue(colorType);
 
         // Create a SolidColorBrush from the accent color
         var accentBrush = new SolidColorBrush(accentColor);

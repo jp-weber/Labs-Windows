@@ -3,9 +3,9 @@
 // See the LICENSE file in the project root for more information.
 
 using Markdig.Syntax;
-using CommunityToolkit.Labs.WinUI.MarkdownTextBlock.TextElements;
+using CommunityToolkit.WinUI.Controls.TextElements;
 
-namespace CommunityToolkit.Labs.WinUI.MarkdownTextBlock.Renderers.ObjectRenderers;
+namespace CommunityToolkit.WinUI.Controls.Renderers.ObjectRenderers;
 
 internal class ThematicBreakRenderer : UWPObjectRenderer<ThematicBreakBlock>
 {
@@ -14,7 +14,7 @@ internal class ThematicBreakRenderer : UWPObjectRenderer<ThematicBreakBlock>
         if (renderer == null) throw new ArgumentNullException(nameof(renderer));
         if (obj == null) throw new ArgumentNullException(nameof(obj));
 
-        var thematicBreak = new MyThematicBreak(obj);
+        var thematicBreak = new MyThematicBreak(obj, renderer.Config.Themes);
 
         renderer.WriteBlock(thematicBreak);
     }

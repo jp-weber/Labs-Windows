@@ -3,9 +3,9 @@
 // See the LICENSE file in the project root for more information.
 
 using Markdig.Extensions.Tables;
-using CommunityToolkit.Labs.WinUI.MarkdownTextBlock.TextElements;
+using CommunityToolkit.WinUI.Controls.TextElements;
 
-namespace CommunityToolkit.Labs.WinUI.MarkdownTextBlock.Renderers.ObjectRenderers.Extensions;
+namespace CommunityToolkit.WinUI.Controls.Renderers.ObjectRenderers.Extensions;
 
 public class TableRenderer : UWPObjectRenderer<Table>
 {
@@ -14,7 +14,7 @@ public class TableRenderer : UWPObjectRenderer<Table>
         if (renderer == null) throw new ArgumentNullException(nameof(renderer));
         if (table == null) throw new ArgumentNullException(nameof(table));
 
-        var myTable = new MyTable(table);
+        var myTable = new MyTable(table, renderer.Config.Themes);
 
         renderer.Push(myTable);
 

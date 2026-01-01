@@ -2,9 +2,10 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using CommunityToolkit.WinUI.Controls;
 using Markdig.Syntax;
 
-namespace CommunityToolkit.Labs.WinUI.MarkdownTextBlock.TextElements;
+namespace CommunityToolkit.WinUI.Controls.TextElements;
 
 internal class MyThematicBreak : IAddChild
 {
@@ -16,7 +17,7 @@ internal class MyThematicBreak : IAddChild
         get => _paragraph;
     }
 
-    public MyThematicBreak(ThematicBreakBlock thematicBreakBlock)
+    public MyThematicBreak(ThematicBreakBlock thematicBreakBlock, MarkdownThemes themes)
     {
         _thematicBreakBlock = thematicBreakBlock;
         _paragraph = new Paragraph();
@@ -25,9 +26,10 @@ internal class MyThematicBreak : IAddChild
         Line line = new Line
         {
             Stretch = Stretch.Fill,
-            Stroke = new SolidColorBrush(Colors.Gray),
+            Stroke = themes.HorizontalRuleBrush ?? themes.BorderBrush,
             X2 = 1,
-            Margin = new Thickness(0, 12, 0, 12)
+            StrokeThickness = themes.HorizontalRuleThickness,
+            Margin = themes.HorizontalRuleMargin
         };
         inlineUIContainer.Child = line;
         _paragraph.Inlines.Add(inlineUIContainer);
